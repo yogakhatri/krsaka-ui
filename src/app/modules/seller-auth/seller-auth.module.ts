@@ -5,15 +5,8 @@ import { SellerAuthRoutingModule } from './seller-auth-routing.module';
 import { SellerLoginComponent } from './seller-login/seller-login.component';
 import { SellerRegisterComponent } from './seller-register/seller-register.component';
 
-
 @NgModule({
-  declarations: [
-    SellerLoginComponent,
-    SellerRegisterComponent
-  ],
-  imports: [
-    CommonModule,
-    SellerAuthRoutingModule
-  ]
+  declarations: [SellerLoginComponent, SellerRegisterComponent],
+  imports: [CommonModule, SellerAuthRoutingModule],
 })
-export class SellerAuthModule { }
+export class SellerAuthModule {}

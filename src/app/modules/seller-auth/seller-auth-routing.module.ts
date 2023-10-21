@@ -7,16 +7,16 @@ import { UserRegisterComponent } from '../user-auth/user-register/user-register.
 const routes: Routes = [
   {
     path: 'login',
-    component: UserLoginComponent
+    component: UserLoginComponent,
   },
   {
     path: 'register',
-    component: UserRegisterComponent
-  }
+    component: UserRegisterComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SellerAuthRoutingModule { }
+export class SellerAuthRoutingModule {}
