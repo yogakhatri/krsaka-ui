@@ -16,6 +16,13 @@ const routes: Routes = [
         (m) => m.SellerAuthModule
       ),
   },
+  {
+    path: 'userProfile',
+    loadChildren: () =>
+      import('./modules/user-profile/user-profile.module').then(
+        (m) => m.UserProfileModule
+      ),
+  },
 ];
 
 @NgModule({
