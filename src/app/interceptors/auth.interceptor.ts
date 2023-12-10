@@ -14,12 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');
-
+    const token = localStorage.getItem('accessToken');
     if (token) {
+      const cleanedToken = token.replace(/^"(.*)"$/, '$1');
+
       req = req.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${cleanedToken}`,
         },
       });
     }

@@ -1,1 +1,21 @@
-<p>user-profile works!</p>
+<div *ngIf="user$ | async as user; else loadingTemplate">
+  {{ user | json }}
+  <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.primaryEmail }}</p>
+
+  <mat-card>
+    <mat-card-title>Address</mat-card-title>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let address of user.addresses">
+          {{ address.street }}, {{ address.city }}, {{ address.country }}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loadingTemplate>
+  <p>Loading user details...</p>
+</ng-template>

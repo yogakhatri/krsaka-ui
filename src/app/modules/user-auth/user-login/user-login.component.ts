@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { userProfile } from 'src/app/shared/http-url';
+import { userProfile } from 'src/app/shared/server-http-url';
 
 @Component({
   selector: 'app-user-login',
@@ -12,22 +13,32 @@ import { userProfile } from 'src/app/shared/http-url';
 })
 export class UserLoginComponent {
   constructor(
-    private authService: AuthService,
+    private fb: FormBuilder,
+    private loginService: AuthService,
     private storageService: StorageService,
     private router: Router
-  ) {
-    this.loginHandler();
-  }
+  ) {}
 
-  loginHandler() {
-    this.authService
-      .login({ username: 'admin', password: 'Admin#@12345' })
-      .subscribe(async () => {
-        if (await this.storageService.getItem('accessToken')) {
-          this.router.navigate([userProfile]);
-        } else {
-          // Do later: handle all possible errors
-        }
+  loginForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
+  onSubmit() {
+    const { username, password } = this.loginForm.value;
+    if (this.loginForm.valid && username && password) {
+      this.loginService.login({ username, password }).subscribe({
+        next: async (response) => {
+          console.log(`Login successful: ${JSON.stringify(response)}`);
+          if (await this.storageService.getItem('accessToken')) {
+            this.router.navigate([userProfile, `${username}`]);
+          }
+        },
+        error: (error: any) => {
+          // Handle specific errors if needed
+          console.error('Login failed:', error);
+        },
       });
+    }
   }
 }

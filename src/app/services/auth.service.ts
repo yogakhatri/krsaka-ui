@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { StorageService } from './storage.service';
 import { environment } from 'environment';
-import { auth } from '../shared/http-url';
+import { auth } from '../shared/server-http-url';
 import { LoginDetails } from '../shared/interfaces';
 
 // "username": "admin",

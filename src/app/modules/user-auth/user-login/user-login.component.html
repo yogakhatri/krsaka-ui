@@ -1,1 +1,26 @@
-<p>user-login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Username"
+      formControlName="username"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      required
+    />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Login</button>
+
+  <div *ngIf="loginForm.hasError('loginFailed')">
+    <p style="color: red">Invalid username or password</p>
+  </div>
+</form>
