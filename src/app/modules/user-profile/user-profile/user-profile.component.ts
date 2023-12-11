@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/shared/interfaces';
+
+interface Transaction {
+  name: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-user-profile',
@@ -11,18 +15,33 @@ import { User } from 'src/app/shared/interfaces';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  user$!: Observable<User>;
+  user$: Observable<Transaction[]> = EMPTY; // Fix: Initialize with EMPTY or another default value
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
   ) {}
 
+  displayedColumns: string[] = ['name', 'value'];
+
   ngOnInit(): void {
     this.user$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const username = params.get('username');
-        return username ? this.userService.getUserDetails(username) : EMPTY;
+        return username
+          ? this.userService
+              .getUserDetails(username)
+              .pipe(map((data: any) => this.convertObjectToArray(data)))
+          : EMPTY;
       })
     );
+  }
+
+  private convertObjectToArray(
+    inputObject: any
+  ): { name: string; value: any }[] {
+    return Object.entries(inputObject).map(([name, value]) => ({
+      name,
+      value,
+    }));
   }
 }
