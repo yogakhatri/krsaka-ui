@@ -1,1 +1,40 @@
-<p>seller-login works!</p>
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Seller Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Username"
+            formControlName="username"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>
+    </mat-card-content>
+
+    <!-- Display error message if login fails -->
+    <mat-card-content
+      *ngIf="loginForm.hasError('loginFailed')"
+      class="error-message"
+    >
+      <p>Invalid username or password</p>
+    </mat-card-content>
+  </mat-card>
+</div>

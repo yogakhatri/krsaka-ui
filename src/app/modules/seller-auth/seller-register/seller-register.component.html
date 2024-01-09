@@ -1,1 +1,55 @@
-<p>seller-register works!</p>
+<mat-card>
+  <mat-card-title>Seller Registration</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstName"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Last Name" formControlName="lastName" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          required
+        />
+        <mat-error
+          *ngIf="
+            registrationForm.get('email')?.hasError('email') &&
+            !registrationForm.get('email')?.hasError('required')
+          "
+        >
+          Enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="tel"
+          placeholder="Phone Number"
+          formControlName="phone"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registrationForm.invalid || isFormSubmitted"
+      >
+        Register
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

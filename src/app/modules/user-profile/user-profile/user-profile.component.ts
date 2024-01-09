@@ -36,6 +36,8 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
+  goBack() {}
+
   private convertObjectToArray(
     inputObject: any
   ): { name: string; value: any }[] {

@@ -29,7 +29,6 @@ export class UserLoginComponent {
     if (this.loginForm.valid && username && password) {
       this.loginService.login({ username, password }).subscribe({
         next: async (response) => {
-          console.log(`Login successful: ${JSON.stringify(response)}`);
           if (await this.storageService.getItem('accessToken')) {
             this.router.navigate([userProfile, `${username}`]);
           }
