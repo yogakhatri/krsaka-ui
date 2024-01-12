@@ -1,0 +1,17 @@
+@import "../../../../variables";
+
+table {
+  width: 100%;
+}
+
+tr.mat-mdc-footer-row td {
+  font-weight: bold;
+}
+
+.sidebar-toggle-button {
+  color: white;
+  background-color: $app-primary-color; // Adjust the shade as needed
+  border: none;
+  margin-right: 16px;
+  padding: 0;
+}

@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <button
+    color="primary"
+    mat-icon-button
+    (click)="goBack()"
+    class="sidebar-toggle-button"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>My Angular App</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+    <div *ngIf="seller$ | async as user; else loadingTemplate">
+      <table mat-table [dataSource]="user" class="mat-elevation-z8">
+        <!-- Details name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <!-- Detail value Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef>Value</th>
+          <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loadingTemplate>
+  <p>Loading user details...</p>
+</ng-template>
