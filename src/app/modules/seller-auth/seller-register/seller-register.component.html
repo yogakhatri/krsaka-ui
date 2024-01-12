@@ -5,6 +5,23 @@
       <mat-form-field class="full-width">
         <input
           matInput
+          placeholder="username"
+          formControlName="username"
+          required
+        />
+        <mat-error
+          *ngIf="
+            registrationForm.get('username')?.hasError('username') &&
+            !registrationForm.get('username')?.hasError('required')
+          "
+        >
+          username length must be between 5 to 20 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
           placeholder="First Name"
           formControlName="firstName"
           required
@@ -29,7 +46,7 @@
             !registrationForm.get('email')?.hasError('required')
           "
         >
-          Enter a valid email address
+          Enter a valid email address.
         </mat-error>
       </mat-form-field>
 

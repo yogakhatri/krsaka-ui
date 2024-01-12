@@ -12,6 +12,14 @@ export class SellerRegisterComponent {
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
+        ],
+      ],
       firstName: ['', [Validators.required]],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
