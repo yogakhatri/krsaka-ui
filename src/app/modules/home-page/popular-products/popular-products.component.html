@@ -1,0 +1,29 @@
+<h2 style="background-color: aliceblue; margin: 5px 5px">
+  Featured Products
+</h2>
+
+<div style="display: flex; flex-wrap: wrap">
+  <mat-card
+    *ngFor="let item of listOfProducts"
+    class="example-card"
+    style="width: 45%; margin: 5px"
+  >
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ item }}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="../../../assets/images/corn.jpg"
+      alt="Corn image"
+    />
+    <!-- <mat-card-content>
+      <p></p>
+    </mat-card-content> -->
+    <mat-card-actions style="width: 100%; justify-content: space-between">
+      <button mat-button>Wishlist</button>
+      <button mat-button>Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

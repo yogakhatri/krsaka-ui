@@ -1,0 +1,29 @@
+  .category-grid {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px;
+  }
+  
+  .category-item {
+    flex: 0 0 100px; 
+    margin-right: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a card-like effect */
+  }
+  
+  .category-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px auto;
+  }
+  
+  .category-details {
+    padding: 8px;
+  }
+  
+  .category-name {
+    margin-top: 8px;
+  }
+  

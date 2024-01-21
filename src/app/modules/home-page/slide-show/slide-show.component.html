@@ -1,0 +1,17 @@
+<div class="slideshow-container">
+  <div
+    *ngFor="let image of images; let i = index"
+    [class.hide]="i !== currentIndex"
+    class="slide"
+    [style.backgroundImage]="'url(' + image + ')'"
+  ></div>
+  <button mat-icon-button class="prev-button" (click)="prevSlide()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-icon-button class="next-button" (click)="nextSlide()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+  <button mat-icon-button class="pause-button" (click)="togglePause()">
+    <mat-icon>{{ isPaused ? "play_arrow" : "pause" }}</mat-icon>
+  </button>
+</div>

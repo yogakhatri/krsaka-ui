@@ -23,6 +23,20 @@ const routes: Routes = [
         (m) => m.UserProfileModule
       ),
   },
+  {
+    path: 'sellerProfile',
+    loadChildren: () =>
+      import('./modules/seller-profile/seller-profile.module').then(
+        (m) => m.SellerProfileModule
+      ),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/home-page/home-page.module').then(
+        (m) => m.HomePageModule
+      ),
+  },
 ];
 
 @NgModule({
