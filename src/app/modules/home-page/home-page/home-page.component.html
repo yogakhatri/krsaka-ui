@@ -1,59 +1,61 @@
-<mat-toolbar color="primary">
-  <div class="header header-in-desktop">
-    <button
-      mat-icon-button
-      class="transparent-background hide-for-desktop"
-      (click)="toggleSideNav()"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
+<div style="background-color: aliceblue;">
+  <mat-toolbar color="primary">
+    <div class="header header-in-desktop">
+      <button
+        mat-icon-button
+        class="transparent-background hide-for-desktop"
+        (click)="toggleSideNav()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
 
-    <div class="logo-container">
-      <h2>Krsaka</h2>
+      <div class="logo-container">
+        <h2>Krsaka</h2>
+      </div>
+
+      <div class="show-in-desktop hide-for-mobile">
+        <mat-form-field class="width-100">
+          <input
+            matInput
+            placeholder="Search Products"
+            class="search-bar-input"
+          />
+          <button mat-button matSuffix>
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <button
+        mat-icon-button
+        class="transparent-background"
+        (click)="askForLocation()"
+      >
+        <mat-icon>location_on</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="transparent-background flex-and-align-items"
+        (click)="signIn()"
+      >
+        <mat-icon class="width-100">person</mat-icon>
+        <p class="hide-for-mobile show-in-desktop margin-0">Login</p>
+      </button>
+
+      <button
+        mat-icon-button
+        class="transparent-background flex-and-align-items"
+        (click)="openCart()"
+      >
+        <mat-icon class="width-100">shopping_cart</mat-icon>
+        <p class="hide-for-mobile show-in-desktop margin-0">Cart</p>
+      </button>
     </div>
+  </mat-toolbar>
 
-    <div class="show-in-desktop hide-for-mobile">
-      <mat-form-field class="width-100">
-        <input
-          matInput
-          placeholder="Search Products"
-          class="search-bar-input"
-        />
-        <button mat-button matSuffix>
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-
-    <button
-      mat-icon-button
-      class="transparent-background"
-      (click)="askForLocation()"
-    >
-      <mat-icon>location_on</mat-icon>
-    </button>
-
-    <button
-      mat-icon-button
-      class="transparent-background flex-and-align-items"
-      (click)="signIn()"
-    >
-      <mat-icon class="width-100">person</mat-icon>
-      <p class="hide-for-mobile show-in-desktop margin-0">Login</p>
-    </button>
-
-    <button
-      mat-icon-button
-      class="transparent-background flex-and-align-items"
-      (click)="openCart()"
-    >
-      <mat-icon class="width-100">shopping_cart</mat-icon>
-      <p class="hide-for-mobile show-in-desktop margin-0">Cart</p>
-    </button>
-  </div>
-</mat-toolbar>
-
-<app-slide-show [images]="imagesPath"></app-slide-show>
-<app-category-bar></app-category-bar>
-<app-popular-products></app-popular-products>
-<app-about-us></app-about-us>
+  <app-slide-show [images]="imagesPath"></app-slide-show>
+  <app-category-bar></app-category-bar>
+  <app-popular-products></app-popular-products>
+  <app-about-us></app-about-us>
+</div>
