@@ -1,0 +1,110 @@
+<!-- product-details.component.html -->
+<div style="background-color: aliceblue">
+  <mat-toolbar color="primary">
+    <div class="header header-in-desktop">
+      <button
+        mat-icon-button
+        class="transparent-background hide-for-desktop"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <div class="logo-container">
+        <h2>Krsaka</h2>
+      </div>
+
+      <div class="show-in-desktop hide-for-mobile">
+        <mat-form-field class="width-100">
+          <input
+            matInput
+            placeholder="Search Products"
+            class="search-bar-input"
+          />
+          <button mat-button matSuffix>
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <button
+        mat-icon-button
+        class="transparent-background"
+        (click)="askForLocation()"
+      >
+        <mat-icon>location_on</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="transparent-background flex-and-align-items"
+        (click)="signIn()"
+      >
+        <mat-icon class="width-100">person</mat-icon>
+        <p class="hide-for-mobile show-in-desktop margin-0">Login</p>
+      </button>
+
+      <button
+        mat-icon-button
+        class="transparent-background flex-and-align-items"
+        (click)="openCart()"
+      >
+        <mat-icon class="width-100">shopping_cart</mat-icon>
+        <p class="hide-for-mobile show-in-desktop margin-0">Cart</p>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="product-card">
+    <div class="image-slider">
+      <img
+        *ngFor="let image of productDetails.images; let i = index"
+        [src]="image"
+        alt="Product Image"
+        [class.active]="i === currentImageIndex"
+      />
+    </div>
+
+    <div class="product-info">
+      <h2>{{ productDetails.name }}</h2>
+      <p class="description">{{ productDetails.description }}</p>
+
+      <div class="details">
+        <p><strong>Category:</strong> {{ productDetails.category }}</p>
+        <p><strong>Subcategory:</strong> {{ productDetails.subCategory }}</p>
+        <p>
+          <strong>Total Quantity:</strong>
+          {{ productDetails.totalQuantity.$numberInt }}
+        </p>
+        <p>
+          <strong>Unit Quantity:</strong>
+          {{ productDetails.unitQuantity.$numberInt }}
+        </p>
+        <p>
+          <strong>Unit Quantity Price:</strong>
+          {{ productDetails.unitQuantityPrice.$numberInt }}
+        </p>
+        <p>
+          <strong>Discount:</strong> {{ productDetails.discount.$numberInt }}%
+        </p>
+      </div>
+
+      <div class="details-list">
+        <h3>Details of Product</h3>
+        <ul>
+          <li *ngFor="let detail of productDetails.detailsOfProduct">
+            {{ detail }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="seller-address">
+        <h3>Seller Address</h3>
+        <p>
+          {{ productDetails.addresses[0].street }},
+          {{ productDetails.addresses[0].city }},
+          {{ productDetails.addresses[0].state }},
+          {{ productDetails.addresses[0].zip }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
